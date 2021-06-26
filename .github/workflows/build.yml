@@ -53,21 +53,17 @@ jobs:
         uses: actions-rs/cargo@v1
         with:
           command: build
-          args: --release --no-default-features
-      - uses: actions/upload-artifact@v2
-        with:
-          name: macos-headless
-          path: target/release/mizer
-          if-no-files-found: error
-      - name: Build
-        uses: actions-rs/cargo@v1
-        with:
-          command: build
           args: --all-features
       - uses: actions/upload-artifact@v2
         with:
           name: macos-full
-          path: target/debug/Mizer.app
+          path: |
+            target/debug/
+            !target/debug/deps/**
+            !target/debug/build/**
+            !target/debug/incremental/**
+            !target/debug/examples/**
+            !target/debug/libmizer*
           if-no-files-found: error
   
   build-client-android:

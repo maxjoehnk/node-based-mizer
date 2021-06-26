@@ -39,6 +39,8 @@ jobs:
   build-macos:
     runs-on: macos-latest
     steps:
+      - name: Install build dependencies
+        run: brew install protobuf gstreamer gst-plugins-base gst-plugins-bad
       - uses: actions/checkout@v2
       - uses: actions-rs/toolchain@v1
         with:

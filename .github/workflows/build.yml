@@ -64,9 +64,11 @@ jobs:
         with:
           command: build
           args: --all-features
+      - name: Debug artifacts
+        run: ls target/debug
       - uses: actions/upload-artifact@v2
         with:
-          name: linux-full
+          name: macos-full
           path: target/debug/mizer
           if-no-files-found: error
   

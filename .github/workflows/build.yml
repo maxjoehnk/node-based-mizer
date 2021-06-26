@@ -64,12 +64,10 @@ jobs:
         with:
           command: build
           args: --all-features
-      - name: Debug artifacts
-        run: ls target/debug
       - uses: actions/upload-artifact@v2
         with:
           name: macos-full
-          path: target/debug/mizer
+          path: target/debug/Mizer.app
           if-no-files-found: error
   
   build-client-android:
